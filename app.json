@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "NetScoreRP",
+    "slug": "NetScoreRP",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "NetScoreRP"
+}
