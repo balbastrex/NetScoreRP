@@ -17,6 +17,14 @@ export default function App() {
           <Text style={styles.player2}>Rafa Navidad</Text>
       </View>
       </View>
+      <View style={styles.scoreboard}>
+        <View style={styles.scoreboardTop}>
+          <Text>Puntuación DAM PADEL</Text>
+        </View>
+        <View style={styles.scoreboardBottom}>
+          <Text>Puntuación DAW PADEL</Text>
+        </View>
+      </View>
       <View style={styles.bottom}>
         <View style={styles.bottomLeft}>
           <Text style={styles.player3}>Belastegón</Text>
@@ -40,7 +48,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   topTitle: {
-    flex: 1,
+    flex: 0.5,
     alignItems: 'center',
     justifyContent: 'center',
     borderColor: '#DFFF4F',
@@ -52,8 +60,31 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     color: '#ffffff',
   },
-  bottomTitle: {
+  scoreboard: {
+    flex: 0.5,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderColor: '#DFFF4F',
+    borderWidth: 2,
+  },
+  scoreboardTop: {
     flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderColor: '#DFFF4F',
+    borderWidth: 2,
+  },
+  scoreboardBottom: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderColor: '#DFFF4F',
+    borderWidth: 2,
+  },
+  bottomTitle: {
+    flex: 0.5,
     alignItems: 'center',
     justifyContent: 'center',
     borderColor: '#DFFF4F',
