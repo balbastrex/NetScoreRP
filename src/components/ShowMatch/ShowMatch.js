@@ -7,7 +7,7 @@ export default function ShowMatch() {
       <View style={styles.container}>
         <View style={styles.mainScreen}>
         <View style={styles.topTitle}>
-            <Text style={styles.topTitleText}>DAM PADEL</Text>
+            <Text style={styles.topTitleText}>STARVIE PADEL</Text>
           </View>
         <View style={styles.top}>
           <View style={styles.topLeft}>
@@ -27,7 +27,7 @@ export default function ShowMatch() {
         </View>
         </View>
         <View style={styles.bottomTitle}>
-          <Text style={styles.bottomTitleText}>DAW PADEL</Text>
+          <Text style={styles.bottomTitleText}>NOX PADEL</Text>
         </View>
       </View>
       </View>

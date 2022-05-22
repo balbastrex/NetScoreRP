@@ -5,14 +5,14 @@ export default function Scoreboard() {
     return (
         <View style={styles.container}>
           <View style={styles.scoreboardTop}>
-          <View style={styles.scoreboardTop}><Text style={styles.scoreboardText}>DAW</Text></View>
+          <View style={styles.scoreboardTop}><Text style={styles.scoreboardText}>Svie</Text></View>
             <View style={styles.scoreboardTop}><Text style={styles.scoreboardText}>6</Text></View>
             <View style={styles.scoreboardTop}><Text style={styles.scoreboardText}>3</Text></View>
             <View style={styles.scoreboardTop}><Text style={styles.scoreboardText}>0</Text></View>
             <View style={styles.scoreboardTop}><Text style={styles.scoreboardText}>40</Text></View>
           </View>
           <View style={styles.scoreboardBottom}>
-            <View style={styles.scoreboardBottom}><Text style={styles.scoreboardText}>DAW</Text></View>
+            <View style={styles.scoreboardBottom}><Text style={styles.scoreboardText}>Nox</Text></View>
             <View style={styles.scoreboardBottom}><Text style={styles.scoreboardText}>4</Text></View>
             <View style={styles.scoreboardBottom}><Text style={styles.scoreboardText}>5</Text></View>
             <View style={styles.scoreboardBottom}><Text style={styles.scoreboardText}>0</Text></View>

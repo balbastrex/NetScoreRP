@@ -2,6 +2,8 @@ import { React, useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { RadioButton } from "react-native-paper";
 
+import Counter from "../Counter/Counter";
+
 export default function BroadcastMatch() {
 
     // SETS
@@ -21,28 +23,84 @@ export default function BroadcastMatch() {
 
 
     return (
+
         <View style={styles.container}>
             <View>
-                <RadioButton
-                    value="first"
-                    status={serve === 'first' ? 'checked' : 'unchecked'}
-                    onPress={() => setServe('first')}
-                />
-                <RadioButton
-                    value="second"
-                    status={serve === 'second' ? 'checked' : 'unchecked'}
-                    onPress={() => setServe('second')}
-                />
+                <View>
+                    <Text style={styles.sectionTitle}>Point management</Text>
+                </View>
+                <View>
+                    <Counter />
+                    <Counter />
+                </View>
             </View>
-            <Text>{{serve}}</Text>
-        </View>
+            <View>
+                <Text style={styles.sectionTitle}>Serve management</Text>
+            </View>
+            <View style={styles.serve}>
+                <View style={styles.serveRow}>
+                    <RadioButton
+                        value="T1L"
+                        status={serve === 'T1L' ? 'checked' : 'unchecked'}
+                        onPress={() => setServe('T1L')}
+                    />
+                    <Text>Player Name</Text>
+                </View>
+                <View style={styles.serveRow}>
+                    <RadioButton
+                        value="T1R"
+                        status={serve === 'T1R' ? 'checked' : 'unchecked'}
+                        onPress={() => setServe('T1R')}
+                    />
+                    <Text>Player Name</Text>
+                </View>
+            </View>
+            <View style={styles.serve}>
+                <View style={styles.serveRow}>
+                    <RadioButton
+                        value="T2L"
+                        status={serve === 'T2L' ? 'checked' : 'unchecked'}
+                        onPress={() => setServe('T2L')}
+                    />
+                    <Text>Player Name</Text>
+                </View>
+                <View style={styles.serveRow}>
+                    <RadioButton
+                        value="T2R"
+                        status={serve === 'T2R' ? 'checked' : 'unchecked'}
+                        onPress={() => setServe('T2R')}
+                    />
+                    <Text>Player Name</Text>
+                </View>
+            </View>
+            <Text>{serve}</Text>
+        </View >
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        width: '100%',
         alignItems: 'center',
         justifyContent: 'center',
+        borderWidth: 2,
+    },
+    sectionTitle: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: '#ffffff',
+        fontSize: 25,
+    },
+    serve: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderWidth: 2,
+    },
+    serveRow: {
+        width: '60%',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: "center",
     },
 });
