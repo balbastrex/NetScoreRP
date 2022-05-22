@@ -1,9 +1,10 @@
 import { React, useState } from 'react';
 import { View, StyleSheet, Text, TextInput } from 'react-native';
 import { Button } from 'react-native-paper';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Home() {
-
+    const navigation = useNavigation();
     const [matchCode, setMatchCode] = useState('');
     return (
         <View style={styles.container}>
@@ -15,25 +16,35 @@ export default function Home() {
                 <View>
                     <TextInput
                         style={styles.input}
-                        placeholder='MATCH CODE'
+                        placeholder='ENTER MATCH CODE'
                         placeholderTextColor='#fff'
                         value={matchCode}
                         onChangeText={setMatchCode}
                         textAlign='center'
                         color='#fff'
                     />
+                    <Button
+                    style={styles.button}
+                        mode="outlined"
+                        onPress={() => navigation.navigate('ShowMatch')}
+                    >
+                        Start viewing!
+                    </Button>
                 </View>
             </View>
             <View style={styles.sectionContainer}>
                 <Text style={styles.sectionText}>START MATCH</Text>
                 <View>
-                    <Button mode="contained"
-                        onPress={() => console.log('hola')}>
+                    <Button 
+                        mode="outlined"
+                        color='#DFFF4F'
+                        onPress={() => console.log('hola')}
+                        >
                         On-line match
                     </Button>
                     <Button
                         style={styles.button}
-                        mode="contained"
+                        mode="outlined"
                         onPress={() => console.log('hola')}>
                         Local match
                     </Button>
@@ -47,6 +58,7 @@ export default function Home() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: '#004AAD',
     },
     titleContainer: {
         flex: 1,
@@ -79,6 +91,6 @@ const styles = StyleSheet.create({
         borderWidth: 2,
     },
     button: {
-        backgroundColor: 'lime',
+        color: '#DFFF4F',
     },
 });

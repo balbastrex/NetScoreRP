@@ -1,7 +1,10 @@
 import { React, useState } from "react";
 import { View, Button, TextInput, Text, StyleSheet } from "react-native";
+import { useNavigation } from '@react-navigation/native';
 
 export default function BroadcastMatchForm() {
+    const navigation = useNavigation();
+
     const [T1Name, setT1Name] = useState("");
     const [T1LName, setT1LName] = useState("");
     const [T1RName, setT1RName] = useState("");

@@ -13,35 +13,35 @@ import BroadcastMatch from './components/BroadcastMatch/BroadcastMatch';
 
 
 
-// export default function App() {
-//   const Stack = createStackNavigator();
-//   return (
-
-//     <NavigationContainer>
-//       <Stack.Navigator>
-//         <Stack.Group>
-//           <Stack.Screen name="Home" component={Home} />
-//           <Stack.Screen name="ShowMatch" component={ShowMatch} />
-//           <Stack.Screen name="BroadcastMatchForm" component={BroadcastMatchForm} />
-//           <Stack.Screen name="BroadcastMatch" component={BroadcastMatch} />
-//         </Stack.Group>
-//       </Stack.Navigator>
-//     </NavigationContainer>
-//   );
-// }
-
-
 export default function App() {
+  const Stack = createStackNavigator();
   return (
-    <View style={styles.container}>
-      <StatusBar style="auto" />
-      <Home />
-      {/* <ShowMatch style={styles.ShowMatch}/> */}
-      {/* <BroadcastMatchForm /> */}
-      {/* <BroadcastMatch /> */}
-    </View>
+
+    <NavigationContainer >
+      <Stack.Navigator options="false">
+        <Stack.Group>
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="ShowMatch" component={ShowMatch} />
+          <Stack.Screen name="BroadcastMatchForm" component={BroadcastMatchForm} />
+          <Stack.Screen name="BroadcastMatch" component={BroadcastMatch} />
+        </Stack.Group>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
+
+
+// export default function App() {
+//   return (
+//     <View style={styles.container}>
+//       <StatusBar style="auto" />
+//       <Home />
+//       {/* <ShowMatch style={styles.ShowMatch}/> */}
+//       {/* <BroadcastMatchForm /> */}
+//       {/* <BroadcastMatch /> */}
+//     </View>
+//   );
+// }
 
 const styles = StyleSheet.create({
   container: {
