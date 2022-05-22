@@ -10,23 +10,22 @@ export default function Home() {
             <View style={styles.titleContainer}>
                 <Text style={styles.titleText}>NetScore</Text>
             </View>
-            <View>
-                <View>
-                    <Text>SHOW MATCH</Text>
-                </View>
+            <View style={styles.sectionContainer}>
+                <Text style={styles.sectionText}>{'SHOW MATCH'}</Text>
                 <View>
                     <TextInput
                         style={styles.input}
                         placeholder='MATCH CODE'
+                        placeholderTextColor='#fff'
                         value={matchCode}
                         onChangeText={setMatchCode}
+                        textAlign='center'
+                        color='#fff'
                     />
                 </View>
             </View>
-            <View style={styles.startMatchContainer}>
-                <View>
-                    <Text>START MATCH</Text>
-                </View>
+            <View style={styles.sectionContainer}>
+                <Text style={styles.sectionText}>START MATCH</Text>
                 <View>
                     <Button mode="contained"
                         onPress={() => console.log('hola')}>
@@ -48,17 +47,22 @@ export default function Home() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
     },
     titleContainer: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+        borderWidth: 2,
     },
     titleText: {
-        fontSize: 30,
+        fontSize: 50,
         color: 'white',
+    },
+    sectionText: {
+        fontSize: 20,
+        textAlign: 'center',
+        color: '#ffffff',
+        borderWidth: 2,
     },
     input: {
         width: 200,
@@ -68,10 +72,11 @@ const styles = StyleSheet.create({
         borderRadius: 16,
         padding: 10,
     },
-    startMatchContainer: {
-        flex: 5,
+    sectionContainer: {
+        flex: 2,
         alignItems: 'center',
         justifyContent: 'center',
+        borderWidth: 2,
     },
     button: {
         backgroundColor: 'lime',
