@@ -4,8 +4,10 @@ import { RadioButton } from "react-native-paper";
 import { useNavigation } from '@react-navigation/native';
 
 import Counter from "../Counter/Counter";
+import GoBack from "../GoBack/GoBack";
 
 export default function BroadcastMatch() {
+    const navigation = useNavigation();
 
     // SETS
     const [set1Top, setSet1Top] = useState('');
@@ -26,12 +28,13 @@ export default function BroadcastMatch() {
     return (
 
         <View style={styles.container}>
+            <GoBack />
             <View>
                 <View>
                     <Text style={styles.sectionTitle}>Point management</Text>
                 </View>
                 <View>
-                    <Counter />
+                    <Counter onChangeValue={(points) => { console.log(points) }}/>
                     <Counter />
                 </View>
             </View>
@@ -81,10 +84,11 @@ export default function BroadcastMatch() {
 
 const styles = StyleSheet.create({
     container: {
-        width: '100%',
+        flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
         borderWidth: 2,
+        backgroundColor: '#004AAD',
     },
     sectionTitle: {
         alignItems: 'center',

@@ -24,8 +24,9 @@ export default function Home() {
                         color='#fff'
                     />
                     <Button
-                    style={styles.button}
                         mode="outlined"
+                        color='#DFFF4F'
+                        style={{borderColor: '#DFFF4F'}}
                         onPress={() => navigation.navigate('ShowMatch')}
                     >
                         Start viewing!
@@ -34,18 +35,20 @@ export default function Home() {
             </View>
             <View style={styles.sectionContainer}>
                 <Text style={styles.sectionText}>START MATCH</Text>
-                <View>
+                <View style={styles.sectionButtons}>
                     <Button 
                         mode="outlined"
                         color='#DFFF4F'
+                        style={{borderColor: '#DFFF4F'}}
                         onPress={() => console.log('hola')}
                         >
                         On-line match
                     </Button>
                     <Button
-                        style={styles.button}
                         mode="outlined"
-                        onPress={() => console.log('hola')}>
+                        color='#DFFF4F'
+                        style={{borderColor: '#DFFF4F'}}
+                        onPress={() => navigation.navigate('BroadcastMatch')}>
                         Local match
                     </Button>
                 </View>
@@ -85,12 +88,13 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     sectionContainer: {
-        flex: 2,
+        flex: 4,
+        
         alignItems: 'center',
         justifyContent: 'center',
         borderWidth: 2,
     },
-    button: {
-        color: '#DFFF4F',
+    sectionButtons: {
+        flexDirection: 'row',
     },
 });

@@ -3,11 +3,16 @@ import { View, StyleSheet, Text } from 'react-native';
 import Scoreboard from '../Scoreboard/Scoreboard';
 import { useNavigation } from '@react-navigation/native';
 
+import GoBack from '../GoBack/GoBack';
+
 export default function ShowMatch() {
   const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
+      <View style={styles.goBack}>
+      <GoBack/>
+      </View>
       <View style={styles.mainScreen}>
         <View style={styles.topTitle}>
           <Text style={styles.topTitleText}>STARVIE PADEL</Text>
@@ -52,6 +57,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: 40,
     marginBottom: 10,
+  },
+  goBack: {
+    flex: 0.3,
   },
   topTitle: {
     flex: 0.3,
