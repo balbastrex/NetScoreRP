@@ -2,13 +2,15 @@ import { React, useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity} from "react-native";
 
 export default function Counter() {
-    const [points, setPoints] = useState('0');
+    const [set1, setSet1] = useState(0);
+    const [points, setPoints] = useState(0);
     const [control, setControl] = useState(0);
     
     // let pointsTop= 0;
     //let control = 0;
 
     const rule = ['0','15','30','40'];
+    const sets = ['0','1','2','3','4','5','6','7'];
 
     const controlMore = () => {
 
@@ -16,6 +18,11 @@ export default function Counter() {
             setControl(control + 1);
             setPoints(rule[control + 1]);
             console.log(control);
+        }
+        if (points === rule[3]) {
+            setControl(0);
+            setPoints('0');
+            setSet1(set1 + 1);
         }
     };
 
@@ -34,6 +41,9 @@ export default function Counter() {
         <View style={styles.container}>
             <View>
                 <Text style={styles.buttonsText}>TEAM NAME</Text>
+            </View>
+            <View>
+                <Text style={styles.buttonsText}>{set1}</Text>
             </View>
             <View>
                 <Text style={styles.buttonsText}>{points}</Text>
