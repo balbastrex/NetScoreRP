@@ -1,0 +1,5 @@
+https://stackoverflow.com/questions/41638032/how-to-pass-data-between-child-and-parent-in-react-native
+https://stackoverflow.com/questions/70503269/react-native-passing-data-from-child-to-parent-component-using-callback-functio
+https://stackoverflow.com/questions/48366471/react-native-pass-data-from-child-to-parent-just-works-in-init
+https://stackoverflow.com/questions/58756853/passing-data-from-child-component-to-parent-component-in-react-native
+https://stackoverflow.com/questions/71818477/how-to-pass-dynamique-data-from-child-to-parent-in-react-native
