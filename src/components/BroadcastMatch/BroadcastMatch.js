@@ -3,6 +3,8 @@ import { View, Text, StyleSheet } from "react-native";
 import { RadioButton } from "react-native-paper";
 import { useNavigation } from '@react-navigation/native';
 
+import firestore from '@react-native-firebase/firestore';
+
 import Counter from "../Counter/Counter";
 import GoBack from "../GoBack/GoBack";
 

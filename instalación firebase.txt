@@ -1,0 +1,21 @@
+npm install --save @react-native-firebase/app
+npm install --save @react-native-firebase/firestore
+
+import firestore from '@react-native-firebase/firestore';
+
+android\app\build.gradle --> 
+
+	apply plugin: 'com.google.gms.google-services'
+
+	dependencies {
+    		implementation platform('com.google.firebase:firebase-bom:30.0.2')
+    		implementation 'com.google.firebase:firebase-analytics'
+
+
+android\build.gradle -->
+
+	dependencies {
+		classpath 'com.google.gms:google-services:4.3.10'
+
+
+Añadir --> android\app\google-services.json
