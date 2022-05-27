@@ -1,6 +1,6 @@
 import { React, useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { RadioButton } from "react-native-paper";
+import { View, Text, StyleSheet, Alert } from "react-native";
+import { RadioButton, Button } from "react-native-paper";
 import { useNavigation } from '@react-navigation/native';
 
 import firestore from '@react-native-firebase/firestore';
@@ -27,6 +27,34 @@ export default function BroadcastMatch() {
     const [serve, setServe] = useState('');
 
 
+    //ALERT MESSAGE
+    const deleteMessage = () =>
+    Alert.alert(
+      "Are you sure you want to finish the match?",
+      "All match data will be deleted",
+      [
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel"
+        },
+        { text: "OK", onPress: () => deleteMatch() }
+      ]
+    );
+
+
+    //DATABASE FUNCTIONS
+    async function deleteMatch() {
+        try {
+            await firestore().collection('match').doc('josepBonico').delete();
+        } catch (e) {
+            console.log(e);
+        } finally {
+            navigation.goBack();
+        }
+    }
+
+
     return (
 
         <View style={styles.container}>
@@ -36,7 +64,7 @@ export default function BroadcastMatch() {
                     <Text style={styles.sectionTitle}>Point management</Text>
                 </View>
                 <View>
-                    <Counter onChangeValue={(points) => { console.log(points) }}/>
+                    <Counter onChangeValue={(points) => { console.log(points) }} />
                     <Counter />
                 </View>
             </View>
@@ -80,6 +108,13 @@ export default function BroadcastMatch() {
                 </View>
             </View>
             <Text>{serve}</Text>
+            <Button
+                mode="outlined"
+                color='#DFFF4F'
+                style={{ borderColor: '#DFFF4F', marginTop: 20, }}
+                onPress={() => deleteMessage()}>
+                FINISH THE MATCH!
+            </Button>
         </View >
     )
 }

@@ -40,8 +40,7 @@ export default function Home() {
                         mode="outlined"
                         color='#DFFF4F'
                         style={{borderColor: '#DFFF4F'}}
-                        onPress={() => console.log('hola')}
-                        >
+                        onPress={() => navigation.navigate('BroadcastMatchForm')}>
                         On-line match
                     </Button>
                     <Button
@@ -67,7 +66,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        borderWidth: 2,
+        //borderWidth: 2,
     },
     titleText: {
         fontSize: 50,
@@ -77,7 +76,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         textAlign: 'center',
         color: '#ffffff',
-        borderWidth: 2,
+        //borderWidth: 2,
     },
     input: {
         width: 200,
@@ -92,7 +91,7 @@ const styles = StyleSheet.create({
         
         alignItems: 'center',
         justifyContent: 'center',
-        borderWidth: 2,
+        //borderWidth: 2,
     },
     sectionButtons: {
         flexDirection: 'row',
