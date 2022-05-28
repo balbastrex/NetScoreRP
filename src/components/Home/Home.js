@@ -39,15 +39,15 @@ export default function Home() {
                     <Button 
                         mode="outlined"
                         color='#DFFF4F'
-                        style={{borderColor: '#DFFF4F'}}
+                        style={{borderColor: '#DFFF4F', margin: 10, marginTop: 15,}}
                         onPress={() => navigation.navigate('BroadcastMatchForm')}>
                         On-line match
                     </Button>
                     <Button
                         mode="outlined"
                         color='#DFFF4F'
-                        style={{borderColor: '#DFFF4F'}}
-                        onPress={() => navigation.navigate('BroadcastMatch')}>
+                        style={{borderColor: '#DFFF4F', margin: 10, marginTop: 15,}}
+                        onPress={() => navigation.navigate('LocalMatchForm')}>
                         Local match
                     </Button>
                 </View>
@@ -59,6 +59,7 @@ export default function Home() {
 
 const styles = StyleSheet.create({
     container: {
+        display: 'flex',
         flex: 1,
         backgroundColor: '#004AAD',
     },
@@ -82,13 +83,11 @@ const styles = StyleSheet.create({
         width: 200,
         margin: 10,
         borderColor: '#DFFF4F',
-        borderWidth: 0.5,
-        borderRadius: 16,
+        borderBottomWidth: 0.5,
         padding: 10,
     },
     sectionContainer: {
-        flex: 4,
-        
+        flex: 5,
         alignItems: 'center',
         justifyContent: 'center',
         //borderWidth: 2,

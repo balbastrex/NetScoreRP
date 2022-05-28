@@ -9,6 +9,8 @@ import Home from './components/Home/Home';
 import ShowMatch from './components/ShowMatch/ShowMatch';
 import BroadcastMatchForm from './components/BroadcastMatchForm/BroadcastMatchForm';
 import BroadcastMatch from './components/BroadcastMatch/BroadcastMatch';
+import LocalMatchForm from './components/LocalMatchForm/LocalMatchForm';
+import LocalMatch from './components/LocalMatch/LocalMatch';
 
 
 
@@ -24,24 +26,13 @@ export default function App() {
           <Stack.Screen name="ShowMatch" component={ShowMatch} />
           <Stack.Screen name="BroadcastMatchForm" component={BroadcastMatchForm} />
           <Stack.Screen name="BroadcastMatch" component={BroadcastMatch} />
+          <Stack.Screen name="LocalMatchForm" component={LocalMatchForm} />
+          <Stack.Screen name="LocalMatch" component={LocalMatch} />
         </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
-
-// export default function App() {
-//   return (
-//     <View style={styles.container}>
-//       <StatusBar style="auto" />
-//       <Home />
-//       {/* <ShowMatch style={styles.ShowMatch}/> */}
-//       {/* <BroadcastMatchForm /> */}
-//       {/* <BroadcastMatch /> */}
-//     </View>
-//   );
-// }
 
 const styles = StyleSheet.create({
   container: {

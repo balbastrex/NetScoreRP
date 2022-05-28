@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import { View, Text, StyleSheet, Alert } from "react-native";
 import { RadioButton, Button } from "react-native-paper";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 import firestore from '@react-native-firebase/firestore';
 
@@ -9,7 +9,10 @@ import Counter from "../Counter/Counter";
 import GoBack from "../GoBack/GoBack";
 
 export default function BroadcastMatch() {
+    
+    //NAVIGATION PARAMS
     const navigation = useNavigation();
+    const route = useRoute();
 
     // SETS
     const [set1Top, setSet1Top] = useState('');
@@ -25,6 +28,21 @@ export default function BroadcastMatch() {
 
     //SERVE
     const [serve, setServe] = useState('');
+
+    //DATABASE FUNCTIONS
+    const updateServe = (player) => {
+
+        try {
+            firestore().collection('match').doc(documentId).set({
+                serve: player,
+            })
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    //DATABASE VARIABLES
+    const documentId = route.params.documentId;
 
 
     //ALERT MESSAGE
@@ -46,7 +64,7 @@ export default function BroadcastMatch() {
     //DATABASE FUNCTIONS
     async function deleteMatch() {
         try {
-            await firestore().collection('match').doc('josepBonico').delete();
+            await firestore().collection('match').doc(documentId).delete();
         } catch (e) {
             console.log(e);
         } finally {
@@ -76,7 +94,7 @@ export default function BroadcastMatch() {
                     <RadioButton
                         value="T1L"
                         status={serve === 'T1L' ? 'checked' : 'unchecked'}
-                        onPress={() => setServe('T1L')}
+                        onPress={() => updateServe('T1L')}
                     />
                     <Text>Player Name</Text>
                 </View>
@@ -84,7 +102,7 @@ export default function BroadcastMatch() {
                     <RadioButton
                         value="T1R"
                         status={serve === 'T1R' ? 'checked' : 'unchecked'}
-                        onPress={() => setServe('T1R')}
+                        onPress={() => updateServe('T1R')}
                     />
                     <Text>Player Name</Text>
                 </View>
@@ -94,7 +112,7 @@ export default function BroadcastMatch() {
                     <RadioButton
                         value="T2L"
                         status={serve === 'T2L' ? 'checked' : 'unchecked'}
-                        onPress={() => setServe('T2L')}
+                        onPress={() => updateServe('T2L')}
                     />
                     <Text>Player Name</Text>
                 </View>
@@ -102,7 +120,7 @@ export default function BroadcastMatch() {
                     <RadioButton
                         value="T2R"
                         status={serve === 'T2R' ? 'checked' : 'unchecked'}
-                        onPress={() => setServe('T2R')}
+                        onPress={() => updateServe('T2R')}
                     />
                     <Text>Player Name</Text>
                 </View>
