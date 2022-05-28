@@ -3,7 +3,7 @@ import { View, StyleSheet, Text } from 'react-native';
 import Scoreboard from '../Scoreboard/Scoreboard';
 import { useNavigation } from '@react-navigation/native';
 
-import GoBack from '../GoBack/GoBack';
+//import GoBack from '../GoBack/GoBack';
 
 export default function ShowMatch() {
   const navigation = useNavigation();
@@ -11,7 +11,7 @@ export default function ShowMatch() {
   return (
     <View style={styles.container}>
       <View style={styles.goBack}>
-      <GoBack/>
+      {/* <GoBack/> */}
       </View>
       <View style={styles.mainScreen}>
         <View style={styles.topTitle}>
@@ -55,18 +55,17 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 40,
     marginBottom: 10,
   },
-  goBack: {
-    flex: 0.3,
-  },
+  // goBack: {
+  //   flex: 0.3,
+  // },
   topTitle: {
     flex: 0.3,
     alignItems: 'center',
     justifyContent: 'flex-end',
-    borderColor: '#DFFF4F',
-    borderWidth: 2,
+    //borderColor: '#DFFF4F',
+    //borderWidth: 2,
   },
   topTitleText: {
     fontSize: 50,
@@ -76,8 +75,8 @@ const styles = StyleSheet.create({
     flex: 0.3,
     alignItems: 'center',
     justifyContent: 'flex-start',
-    borderColor: '#DFFF4F',
-    borderWidth: 2,
+    //borderColor: '#DFFF4F',
+    //borderWidth: 2,
   },
   bottomTitleText: {
     fontSize: 50,
