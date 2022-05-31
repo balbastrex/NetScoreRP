@@ -6,25 +6,36 @@ export default function Counter(props) {
     const [set1, setSet1] = useState(0);
     const [points, setPoints] = useState(0);
     const [control, setControl] = useState(0);
+    const [doc, setDoc] = useState('');
     const dbPoints = props.points;
+    const documentId = props.documentId;
 
 
     //DATABASE FUNCTIONS
     const updatePoints = () => {
         if (dbPoints === 'T1Points') {
             try {
-                firestore().collection('match').doc(props.documentId).update({ T1Points: points });
+                firestore().collection('match').doc(documentId).update({ T1Points: points });
             } catch (e) {
                 console.log(e);
             }
         } else if (dbPoints === 'T2Points') {
             try {
-                firestore().collection('match').doc(props.documentId).update({ T2Points: points });
+                firestore().collection('match').doc(documentId).update({ T2Points: points });
             } catch (e) {
                 console.log(e);
             }
         }
 
+    }
+
+    const updateSets = () => {
+        try {
+            firestore().collection('match').doc(documentId).get()
+                .then(snapshot => setDoc(snapshot.data()))
+        } catch (e) {
+            console.log(e);
+        }
     }
 
     // let pointsTop= 0;
@@ -45,6 +56,12 @@ export default function Counter(props) {
             setPoints('0');
             setSet1(set1 + 1);
         }
+
+        if (doc.T1Points === doc.T2Points && doc.T1Points === rule[40]) {
+            firestore().collection('match').doc(documentId).update({ T1Points: 0 });
+            firestore().collection('match').doc(documentId).update({ T2Points: 0 });
+            firestore().collection('match').doc(documentId).update({ T1Set1: set1 });
+        }
     };
 
     const controlLess = () => {
@@ -58,6 +75,7 @@ export default function Counter(props) {
 
     useEffect(() => {
         updatePoints();
+        updateSets();
     })
 
 
