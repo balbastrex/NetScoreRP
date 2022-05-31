@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity} from "react-native";
 
-export default function Counter() {
+export default function Counter(props) {
     const [set1, setSet1] = useState(0);
     const [points, setPoints] = useState(0);
     const [control, setControl] = useState(0);
@@ -39,47 +39,66 @@ export default function Counter() {
     return (
 
         <View style={styles.container}>
-            <View>
-                <Text style={styles.buttonsText}>TEAM NAME</Text>
+            <View style={styles.counter}>
+               <View>
+                <Text style={styles.buttonsText}>{props.name}</Text>
             </View>
             <View>
                 <Text style={styles.buttonsText}>{set1}</Text>
             </View>
             <View>
-                <Text style={styles.buttonsText}>{points}</Text>
+                <Text style={styles.buttonsText}>{set1}</Text>
             </View>
             <View>
-            {/* <TouchableOpacity 
+                <Text style={styles.buttonsText}>{set1}</Text>
+            </View>
+            {/* <View>
+                <Text style={styles.buttonsText}>{points}</Text>
+            </View> */}
+            <View>
+                {/* <TouchableOpacity 
                 style={styles.buttons} 
                 onChangeText = {(points) => { setpoints(points) this.props.onChangeValue(value) }} 
                     onPress={() =>controlMore()}><Text style={styles.buttonsText}>+</Text></TouchableOpacity> */}
-                <TouchableOpacity style={styles.buttons} onPress={() =>controlMore()}><Text style={styles.buttonsText}>+</Text></TouchableOpacity>
-                <TouchableOpacity style={styles.buttons} onPress={() =>controlLess()}><Text style={styles.buttonsText}>-</Text></TouchableOpacity>
+                <TouchableOpacity style={styles.buttons} onPress={() => controlMore()}><Text style={styles.buttonsText}>+</Text></TouchableOpacity>
+                <Text style={styles.buttonsText}>{points}</Text>
+                <TouchableOpacity style={styles.buttons} onPress={() => controlLess()}><Text style={styles.buttonsText}>-</Text></TouchableOpacity>
+            </View> 
             </View>
+            
         </View >
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#ffffff',
+        display: "flex",
+        alignItems: 'center',
+        justifyContent: 'center',
+        //borderWidth: 2,
+    },
+    counter: {
         flexDirection: "row",
         alignItems: 'center',
         justifyContent: 'center',
-        borderWidth: 2,
+        marginVertical: 10,
     },
     buttons: {
-        backgroundColor: 'green',
-        marginVertical: 5,
-        marginHorizontal: 30,
-        paddingVertical: 5,
-        paddingHorizontal: 20,
+        marginVertical: 0,
+        marginHorizontal: 0,
+        paddingVertical: 0,
+        paddingHorizontal: 5,
         alignItems: 'center',
         justifyContent: 'center',
+        borderWidth: 0.5,
+        borderColor: '#DFFF4F',
+        borderRadius: 16,
     },
     buttonsText: {
         fontSize: 35,
         alignItems: 'center',
         justifyContent: 'center',
+        color: '#DFFF4F',
+        marginHorizontal: 5, 
     },
 });

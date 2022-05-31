@@ -1,18 +1,20 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 
-export default function Scoreboard() {
+export default function Scoreboard(props) {
+  const doc = props.doc;
+
     return (
         <View style={styles.container}>
           <View style={styles.scoreboardTop}>
-          <View style={styles.scoreboardTop}><Text style={styles.scoreboardText}>Svie</Text></View>
+          <View style={styles.scoreboardTop}><Text style={styles.scoreboardTeam}>{doc.T1Name}</Text></View>
             <View style={styles.scoreboardTop}><Text style={styles.scoreboardText}>6</Text></View>
             <View style={styles.scoreboardTop}><Text style={styles.scoreboardText}>3</Text></View>
             <View style={styles.scoreboardTop}><Text style={styles.scoreboardText}>0</Text></View>
             <View style={styles.scoreboardTop}><Text style={styles.scoreboardText}>40</Text></View>
           </View>
           <View style={styles.scoreboardBottom}>
-            <View style={styles.scoreboardBottom}><Text style={styles.scoreboardText}>Nox</Text></View>
+            <View style={styles.scoreboardBottom}><Text style={styles.scoreboardTeam}>{doc.T2Name}</Text></View>
             <View style={styles.scoreboardBottom}><Text style={styles.scoreboardText}>4</Text></View>
             <View style={styles.scoreboardBottom}><Text style={styles.scoreboardText}>5</Text></View>
             <View style={styles.scoreboardBottom}><Text style={styles.scoreboardText}>0</Text></View>
@@ -26,10 +28,9 @@ export default function Scoreboard() {
 const styles = StyleSheet.create({
     container: {
         flex: 0.5,
+        backgroundColor: 'rgba(255, 255, 255, 0.2)',
         alignItems: 'center',
         justifyContent: 'center',
-        borderColor: '#0d0d0d',
-        borderWidth: 2,
       },
       scoreboardTop: {
         flex: 1,
@@ -44,6 +45,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
       },
       scoreboardText: {
-        fontSize: 30,
+        fontSize: 50,
+        color: 'rgba(50, 50, 50, 1)',
+      },
+      scoreboardTeam: {
+        paddingTop: 5,
+        color: 'rgba(50, 50, 50, 1)',
+        fontSize: 25,
+        fontWeight: '700',
       },
   });

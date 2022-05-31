@@ -3,22 +3,6 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 export default function Counter(props) {
 
-    //PROPS
-    //const T1LName = props.T1LName;
-
-    // SETS
-    const [set1Top, setSet1Top] = useState('');
-    const [set2Top, setSet2Top] = useState('');
-    const [set3Top, setSet3Top] = useState('');
-    const [set1Bottom, setSet1Bottom] = useState('');
-    const [set2Bottom, setSet2Bottom] = useState('');
-    const [set3Bottom, setSet3Bottom] = useState('');
-
-    // POINTS
-    const [pointsTop, setPointsTop] = useState('');
-    const [pointsBottom, setPointsBottom] = useState('');
-
-
     const [set1, setSet1] = useState(0);
     const [points, setPoints] = useState(0);
     const [control, setControl] = useState(0);
@@ -64,14 +48,21 @@ export default function Counter(props) {
                 <Text style={styles.buttonsText}>{set1}</Text>
             </View>
             <View>
-                <Text style={styles.buttonsText}>{points}</Text>
+                <Text style={styles.buttonsText}>{set1}</Text>
             </View>
+            <View>
+                <Text style={styles.buttonsText}>{set1}</Text>
+            </View>
+            {/* <View>
+                <Text style={styles.buttonsText}>{points}</Text>
+            </View> */}
             <View>
                 {/* <TouchableOpacity 
                 style={styles.buttons} 
                 onChangeText = {(points) => { setpoints(points) this.props.onChangeValue(value) }} 
                     onPress={() =>controlMore()}><Text style={styles.buttonsText}>+</Text></TouchableOpacity> */}
                 <TouchableOpacity style={styles.buttons} onPress={() => controlMore()}><Text style={styles.buttonsText}>+</Text></TouchableOpacity>
+                <Text style={styles.buttonsText}>{points}</Text>
                 <TouchableOpacity style={styles.buttons} onPress={() => controlLess()}><Text style={styles.buttonsText}>-</Text></TouchableOpacity>
             </View> 
             </View>
@@ -94,10 +85,10 @@ const styles = StyleSheet.create({
         marginVertical: 10,
     },
     buttons: {
-        marginVertical: 5,
-        marginHorizontal: 20,
-        paddingVertical: 5,
-        paddingHorizontal: 20,
+        marginVertical: 0,
+        marginHorizontal: 0,
+        paddingVertical: 0,
+        paddingHorizontal: 5,
         alignItems: 'center',
         justifyContent: 'center',
         borderWidth: 0.5,

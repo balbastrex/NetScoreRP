@@ -64,6 +64,15 @@ export default function BroadcastMatchForm() {
                 T2Name: T2Name,
                 T2LName: T2LName,
                 T2RName: T2RName,
+                serve: '',
+                T1Points: 0,
+                T1Set1: 0,
+                T1Set2: 0,
+                T1Set3: 0,
+                T2Points: 0,
+                T2Set1: 0,
+                T2Set2: 0,
+                T2Set3: 0,
             })
         } catch (e) {
             console.log(e);
@@ -75,6 +84,12 @@ export default function BroadcastMatchForm() {
 
             navigation.navigate('BroadcastMatch', {
                 documentId: documentId,
+                T1Name: T1Name,
+                T1LName: T1LName,
+                T1RName: T1RName,
+                T2Name: T2Name,
+                T2LName: T2LName,
+                T2RName: T2RName,
             });
         }
     }

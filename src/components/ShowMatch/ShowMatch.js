@@ -1,44 +1,65 @@
-import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { React, useEffect, useState } from 'react';
+import { View, StyleSheet, Text, ImageBackground } from 'react-native';
 import Scoreboard from '../Scoreboard/Scoreboard';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import firestore from '@react-native-firebase/firestore';
 
 //import GoBack from '../GoBack/GoBack';
 
 export default function ShowMatch() {
   const navigation = useNavigation();
+  const route = useRoute();
+
+  const documentId = route.params.item;
+
+  const [doc, setDoc] = useState('');
+
+  const getData = () => {
+    try {
+      firestore().collection('match').doc(documentId).get()
+        .then(snapshot => setDoc(snapshot.data()))
+      console.log(doc.T1Name);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  useEffect(() => {
+    getData();
+  }, [])
 
   return (
-    <View style={styles.container}>
-      <View style={styles.goBack}>
-      {/* <GoBack/> */}
+    <ImageBackground
+      source={require('../../assets/padelField.png')}
+      style={{ width: '100%', height: '100%' }}>
+      <View style={styles.container}>
+        <View style={styles.mainScreen}>
+          <View style={styles.topTitle}>
+            <Text style={styles.topTitleText}>{doc.T1Name}</Text>
+          </View>
+          <View style={styles.top}>
+            <View style={styles.topLeft}>
+              <Text style={styles.player1}>{doc.T1LName}</Text>
+            </View>
+            <View style={styles.topRight}>
+              <Text style={styles.player}>{doc.T1RName}</Text>
+            </View>
+          </View>
+          <Scoreboard style={styles.scoreboard} doc={doc} />
+          <View style={styles.bottom}>
+            <View style={styles.bottomLeft}>
+              <Text style={styles.player}>{doc.T2LName}</Text>
+            </View>
+            <View style={styles.bottomRight}>
+              <Text style={styles.player}>{doc.T2RName}</Text>
+            </View>
+          </View>
+          <View style={styles.bottomTitle}>
+            <Text style={styles.bottomTitleText}>{doc.T2Name}</Text>
+          </View>
+        </View>
       </View>
-      <View style={styles.mainScreen}>
-        <View style={styles.topTitle}>
-          <Text style={styles.topTitleText}>STARVIE PADEL</Text>
-        </View>
-        <View style={styles.top}>
-          <View style={styles.topLeft}>
-            <Text style={styles.player1}>Paco Jonarte</Text>
-          </View>
-          <View style={styles.topRight}>
-            <Text style={styles.player2}>Rafa Navidad</Text>
-          </View>
-        </View>
-        <Scoreboard style={styles.scoreboard} />
-        <View style={styles.bottom}>
-          <View style={styles.bottomLeft}>
-            <Text style={styles.player3}>Belastegón</Text>
-          </View>
-          <View style={styles.bottomRight}>
-            <Text style={styles.player4}>Juan LeBrín</Text>
-          </View>
-        </View>
-        <View style={styles.bottomTitle}>
-          <Text style={styles.bottomTitleText}>NOX PADEL</Text>
-        </View>
-      </View>
-    </View>
+    </ImageBackground>
   );
 }
 
@@ -47,7 +68,7 @@ export default function ShowMatch() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#004AAD',
+    // backgroundColor: '#004AAD',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -57,15 +78,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginBottom: 10,
   },
-  // goBack: {
-  //   flex: 0.3,
-  // },
   topTitle: {
     flex: 0.3,
     alignItems: 'center',
     justifyContent: 'flex-end',
-    //borderColor: '#DFFF4F',
-    //borderWidth: 2,
   },
   topTitleText: {
     fontSize: 50,
@@ -75,8 +91,6 @@ const styles = StyleSheet.create({
     flex: 0.3,
     alignItems: 'center',
     justifyContent: 'flex-start',
-    //borderColor: '#DFFF4F',
-    //borderWidth: 2,
   },
   bottomTitleText: {
     fontSize: 50,
@@ -123,17 +137,13 @@ const styles = StyleSheet.create({
   },
   player1: {
     color: '#ffffff',
+    fontSize: 30,
     padding: 5,
     borderColor: '#DFFF4F',
     borderWidth: 2,
   },
-  player2: {
+  player: {
     color: '#DFFF4F',
-  },
-  player3: {
-    color: '#DFFF4F',
-  },
-  player4: {
-    color: '#DFFF4F',
+    fontSize: 30,
   },
 });

@@ -7,8 +7,6 @@ import LocalCounter from "../LocalCounter/LocalCounter";
 
 export default function LocalMatch() {
 
-    //PROPS
-    const name = 'XIMO';
 
     //NAVIGATION PARAMS
     const navigation = useNavigation();
@@ -95,7 +93,6 @@ export default function LocalMatch() {
                     <Text>{T2RName}</Text>
                 </View>
             </View>
-            <Text>{serve}</Text>
             <Button
                 mode="outlined"
                 color='#DFFF4F'
@@ -112,8 +109,13 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        borderWidth: 2,
         backgroundColor: '#004AAD',
+    },
+    titleText: {
+        marginTop: -20,
+        marginBottom: 20,
+        fontSize: 30,
+        color: 'white',
     },
     sectionTitle: {
         alignItems: 'center',
@@ -125,7 +127,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        borderWidth: 2,
     },
     serveRow: {
         width: '60%',

@@ -11,20 +11,23 @@ export default function Home() {
     const [matchCode, setMatchCode] = useState('');
 
     //DATABASE FUNCTIONS (GET ACTIVE MATCHES)
-    let list = ['1NCH69msj0cmKjnmgKrn', 'U1T4mna6JRSjT65x6Tbp', 'muiUKqjlFvBY3v44JvEC'];
-    // async function getMatches() {
-    //     const matchesRef = firestore().collection('match');
-    //     const snapshot = await matchesRef.get();
-    //     snapshot.forEach(doc => {
-    //         list.push(doc.id);
-    //         console.log(doc.id);
-    //     });
-    // }
+    const [list, setList] = useState([]);
+    //let list = ['1NCH69msj0cmKjnmgKrn', 'U1T4mna6JRSjT65x6Tbp', 'muiUKqjlFvBY3v44JvEC','1NCH69msj0cmKjnmgKrn', 'U1T4mna6JRSjT65x6Tbp', 'muiUKqjlFvBY3v44JvEC','1NCH69msj0cmKjnmgKrn', 'U1T4mna6JRSjT65x6Tbp', 'muiUKqjlFvBY3v44JvEC',];
+    async function getMatches() {
+        //setList([]);
+        const matchesRef = firestore().collection('match');
+        const snapshot = await matchesRef.get();
+        snapshot.forEach(doc => {
+            setList(list => [...list, doc.id])
+            //list.push(doc.id);
+            console.log(doc.id);
+        });
+    }
 
 
-    // useEffect(() => {
-    //     getMatches();
-    // }, [])
+    useEffect(() => {
+        getMatches();
+    }, [])
 
 
     return (

@@ -6,10 +6,9 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import firestore from '@react-native-firebase/firestore';
 
 import Counter from "../Counter/Counter";
-import GoBack from "../GoBack/GoBack";
 
 export default function BroadcastMatch() {
-    
+
     //NAVIGATION PARAMS
     const navigation = useNavigation();
     const route = useRoute();
@@ -31,11 +30,10 @@ export default function BroadcastMatch() {
 
     //DATABASE FUNCTIONS
     const updateServe = (player) => {
+        setServe(player);
 
         try {
-            firestore().collection('match').doc(documentId).set({
-                serve: player,
-            })
+            firestore().collection('match').doc(documentId).update({serve: player});
         } catch (e) {
             console.log(e);
         }
@@ -43,22 +41,27 @@ export default function BroadcastMatch() {
 
     //DATABASE VARIABLES
     const documentId = route.params.documentId;
+    const T1Name = route.params.T1Name;
+    const T1LName = route.params.T1LName;
+    const T1RName = route.params.T1RName;
+    const T2Name = route.params.T2Name;
+    const T2LName = route.params.T2LName;
+    const T2RName = route.params.T2RName;
 
 
     //ALERT MESSAGE
     const deleteMessage = () =>
-    Alert.alert(
-      "Are you sure you want to finish the match?",
-      "All match data will be deleted",
-      [
-        {
-          text: "Cancel",
-          onPress: () => console.log("Cancel Pressed"),
-          style: "cancel"
-        },
-        { text: "OK", onPress: () => deleteMatch() }
-      ]
-    );
+        Alert.alert(
+            "Are you sure you want to finish the match?",
+            "All match data will be deleted",
+            [
+                {
+                    text: "Cancel",
+                    style: "cancel"
+                },
+                { text: "OK", onPress: () => deleteMatch() }
+            ]
+        );
 
 
     //DATABASE FUNCTIONS
@@ -68,7 +71,7 @@ export default function BroadcastMatch() {
         } catch (e) {
             console.log(e);
         } finally {
-            navigation.goBack();
+            navigation.navigate('Home');
         }
     }
 
@@ -76,14 +79,14 @@ export default function BroadcastMatch() {
     return (
 
         <View style={styles.container}>
-            <GoBack />
+            <Text style={styles.titleText}>MATCH CODE: {documentId}</Text>
             <View>
                 <View>
                     <Text style={styles.sectionTitle}>Point management</Text>
                 </View>
                 <View>
-                    <Counter onChangeValue={(points) => { console.log(points) }} />
-                    <Counter />
+                    <Counter name={T1Name} />
+                    <Counter name={T2Name} />
                 </View>
             </View>
             <View>
@@ -92,40 +95,39 @@ export default function BroadcastMatch() {
             <View style={styles.serve}>
                 <View style={styles.serveRow}>
                     <RadioButton
-                        value="T1L"
-                        status={serve === 'T1L' ? 'checked' : 'unchecked'}
-                        onPress={() => updateServe('T1L')}
+                        value={T1LName}
+                        status={serve === T1LName ? 'checked' : 'unchecked'}
+                        onPress={() => updateServe(T1LName)}
                     />
-                    <Text>Player Name</Text>
+                    <Text>{T1LName}</Text>
                 </View>
                 <View style={styles.serveRow}>
                     <RadioButton
-                        value="T1R"
-                        status={serve === 'T1R' ? 'checked' : 'unchecked'}
-                        onPress={() => updateServe('T1R')}
+                        value={T1RName}
+                        status={serve === T1RName ? 'checked' : 'unchecked'}
+                        onPress={() => updateServe(T1RName)}
                     />
-                    <Text>Player Name</Text>
+                    <Text>{T1RName}</Text>
                 </View>
             </View>
             <View style={styles.serve}>
                 <View style={styles.serveRow}>
                     <RadioButton
-                        value="T2L"
-                        status={serve === 'T2L' ? 'checked' : 'unchecked'}
-                        onPress={() => updateServe('T2L')}
+                        value={T2LName}
+                        status={serve === T2LName ? 'checked' : 'unchecked'}
+                        onPress={() => updateServe(T2LName)}
                     />
-                    <Text>Player Name</Text>
+                    <Text>{T2LName}</Text>
                 </View>
                 <View style={styles.serveRow}>
                     <RadioButton
-                        value="T2R"
-                        status={serve === 'T2R' ? 'checked' : 'unchecked'}
-                        onPress={() => updateServe('T2R')}
+                        value={T2RName}
+                        status={serve === T2RName ? 'checked' : 'unchecked'}
+                        onPress={() => updateServe(T2RName)}
                     />
-                    <Text>Player Name</Text>
+                    <Text>{T2RName}</Text>
                 </View>
             </View>
-            <Text>{serve}</Text>
             <Button
                 mode="outlined"
                 color='#DFFF4F'
@@ -142,8 +144,13 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        borderWidth: 2,
         backgroundColor: '#004AAD',
+    },
+    titleText: {
+        marginTop: -20,
+        marginBottom: 20,
+        fontSize: 30,
+        color: 'white',
     },
     sectionTitle: {
         alignItems: 'center',
@@ -155,7 +162,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        borderWidth: 2,
     },
     serveRow: {
         width: '60%',
