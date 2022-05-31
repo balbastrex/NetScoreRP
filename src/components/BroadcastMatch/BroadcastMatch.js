@@ -85,8 +85,8 @@ export default function BroadcastMatch() {
                     <Text style={styles.sectionTitle}>Point management</Text>
                 </View>
                 <View>
-                    <Counter name={T1Name} />
-                    <Counter name={T2Name} />
+                    <Counter name={T1Name} points={'T1Points'} documentId={documentId} />
+                    <Counter name={T2Name} points={'T2Points'} documentId={documentId} />
                 </View>
             </View>
             <View>

@@ -1,8 +1,26 @@
-import React from 'react';
+import { React, useEffect, useState } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 
+import firestore from '@react-native-firebase/firestore';
+
 export default function Scoreboard(props) {
-  const doc = props.doc;
+  const [doc, setDoc] = useState('');
+  const documentId = props.documentId;
+
+  const getPoints = () => {
+    try {
+      firestore().collection('match').doc(documentId).get()
+        .then(snapshot => setDoc(snapshot.data()))
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+
+  useEffect(() => {
+    getPoints();
+  })
+
 
     return (
         <View style={styles.container}>
@@ -11,14 +29,14 @@ export default function Scoreboard(props) {
             <View style={styles.scoreboardTop}><Text style={styles.scoreboardText}>6</Text></View>
             <View style={styles.scoreboardTop}><Text style={styles.scoreboardText}>3</Text></View>
             <View style={styles.scoreboardTop}><Text style={styles.scoreboardText}>0</Text></View>
-            <View style={styles.scoreboardTop}><Text style={styles.scoreboardText}>40</Text></View>
+            <View style={styles.scoreboardTop}><Text style={styles.scoreboardText}>{doc.T1Points}</Text></View>
           </View>
           <View style={styles.scoreboardBottom}>
             <View style={styles.scoreboardBottom}><Text style={styles.scoreboardTeam}>{doc.T2Name}</Text></View>
             <View style={styles.scoreboardBottom}><Text style={styles.scoreboardText}>4</Text></View>
             <View style={styles.scoreboardBottom}><Text style={styles.scoreboardText}>5</Text></View>
             <View style={styles.scoreboardBottom}><Text style={styles.scoreboardText}>0</Text></View>
-            <View style={styles.scoreboardBottom}><Text style={styles.scoreboardText}>15</Text></View>
+            <View style={styles.scoreboardBottom}><Text style={styles.scoreboardText}>{doc.T2Points}</Text></View>
           </View>
         </View>
     );

@@ -18,15 +18,15 @@ export default function ShowMatch() {
     try {
       firestore().collection('match').doc(documentId).get()
         .then(snapshot => setDoc(snapshot.data()))
-      console.log(doc.T1Name);
     } catch (e) {
       console.log(e);
     }
   }
 
+
   useEffect(() => {
     getData();
-  }, [])
+  })
 
   return (
     <ImageBackground
@@ -39,19 +39,19 @@ export default function ShowMatch() {
           </View>
           <View style={styles.top}>
             <View style={styles.topLeft}>
-              <Text style={styles.player1}>{doc.T1LName}</Text>
+              <Text style={doc.serve === doc.T1LName ? styles.player1 : styles.player }>{doc.T1LName}</Text>
             </View>
             <View style={styles.topRight}>
-              <Text style={styles.player}>{doc.T1RName}</Text>
+              <Text style={doc.serve === doc.T1RName ? styles.player1 : styles.player }>{doc.T1RName}</Text>
             </View>
           </View>
-          <Scoreboard style={styles.scoreboard} doc={doc} />
+          <Scoreboard style={styles.scoreboard} documentId={documentId} />
           <View style={styles.bottom}>
             <View style={styles.bottomLeft}>
-              <Text style={styles.player}>{doc.T2LName}</Text>
+              <Text style={doc.serve === doc.T2LName ? styles.player1 : styles.player }>{doc.T2LName}</Text>
             </View>
             <View style={styles.bottomRight}>
-              <Text style={styles.player}>{doc.T2RName}</Text>
+              <Text style={doc.serve === doc.T2RName ? styles.player1 : styles.player }>{doc.T2RName}</Text>
             </View>
           </View>
           <View style={styles.bottomTitle}>

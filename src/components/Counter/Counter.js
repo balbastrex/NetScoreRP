@@ -1,16 +1,37 @@
-import { React, useState } from "react";
-import { View, Text, StyleSheet, TouchableOpacity} from "react-native";
+import { React, useState, useEffect } from "react";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import firestore from '@react-native-firebase/firestore';
 
 export default function Counter(props) {
     const [set1, setSet1] = useState(0);
     const [points, setPoints] = useState(0);
     const [control, setControl] = useState(0);
-    
+    const dbPoints = props.points;
+
+
+    //DATABASE FUNCTIONS
+    const updatePoints = () => {
+        if (dbPoints === 'T1Points') {
+            try {
+                firestore().collection('match').doc(props.documentId).update({ T1Points: points });
+            } catch (e) {
+                console.log(e);
+            }
+        } else if (dbPoints === 'T2Points') {
+            try {
+                firestore().collection('match').doc(props.documentId).update({ T2Points: points });
+            } catch (e) {
+                console.log(e);
+            }
+        }
+
+    }
+
     // let pointsTop= 0;
     //let control = 0;
 
-    const rule = ['0','15','30','40'];
-    const sets = ['0','1','2','3','4','5','6','7'];
+    const rule = ['0', '15', '30', '40'];
+    const sets = ['0', '1', '2', '3', '4', '5', '6', '7'];
 
     const controlMore = () => {
 
@@ -35,37 +56,41 @@ export default function Counter(props) {
         }
     };
 
+    useEffect(() => {
+        updatePoints();
+    })
+
 
     return (
 
         <View style={styles.container}>
             <View style={styles.counter}>
-               <View>
-                <Text style={styles.buttonsText}>{props.name}</Text>
-            </View>
-            <View>
-                <Text style={styles.buttonsText}>{set1}</Text>
-            </View>
-            <View>
-                <Text style={styles.buttonsText}>{set1}</Text>
-            </View>
-            <View>
-                <Text style={styles.buttonsText}>{set1}</Text>
-            </View>
-            {/* <View>
+                <View>
+                    <Text style={styles.buttonsText}>{props.name}</Text>
+                </View>
+                <View>
+                    <Text style={styles.buttonsText}>{set1}</Text>
+                </View>
+                <View>
+                    <Text style={styles.buttonsText}>{set1}</Text>
+                </View>
+                <View>
+                    <Text style={styles.buttonsText}>{set1}</Text>
+                </View>
+                {/* <View>
                 <Text style={styles.buttonsText}>{points}</Text>
             </View> */}
-            <View>
-                {/* <TouchableOpacity 
+                <View>
+                    {/* <TouchableOpacity 
                 style={styles.buttons} 
                 onChangeText = {(points) => { setpoints(points) this.props.onChangeValue(value) }} 
                     onPress={() =>controlMore()}><Text style={styles.buttonsText}>+</Text></TouchableOpacity> */}
-                <TouchableOpacity style={styles.buttons} onPress={() => controlMore()}><Text style={styles.buttonsText}>+</Text></TouchableOpacity>
-                <Text style={styles.buttonsText}>{points}</Text>
-                <TouchableOpacity style={styles.buttons} onPress={() => controlLess()}><Text style={styles.buttonsText}>-</Text></TouchableOpacity>
-            </View> 
+                    <TouchableOpacity style={styles.buttons} onPress={() => controlMore()}><Text style={styles.buttonsText}>+</Text></TouchableOpacity>
+                    <Text style={styles.buttonsText}>{points}</Text>
+                    <TouchableOpacity style={styles.buttons} onPress={() => controlLess()}><Text style={styles.buttonsText}>-</Text></TouchableOpacity>
+                </View>
             </View>
-            
+
         </View >
     )
 }
@@ -99,6 +124,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         color: '#DFFF4F',
-        marginHorizontal: 5, 
+        marginHorizontal: 5,
     },
 });
